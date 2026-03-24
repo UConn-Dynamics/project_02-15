@@ -29,8 +29,23 @@ TBD
 ## Conclusions
 TBD
 
-## Derivation
-TBD
+## Derivations
+
+$$
+\vec{q} =
+\begin{bmatrix}
+x_1 \\
+y_1 \\
+\theta_1 \\
+x_2 \\
+y_2 \\
+\theta_2 \\
+x_3 \\
+y_3 \\
+\theta_3
+\end{bmatrix}
+$$
+
 
 ## Reproducing Results
 TBD
