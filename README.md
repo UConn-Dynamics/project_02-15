@@ -72,7 +72,7 @@ For the system above, the hinges are mounted at the center of each piston. So th
 $$
 \begin{aligned}
 \vec{r}_{hinge,1} &= \vec{R}_1 + A(\theta_1) \, \vec{s}_1 \\
-&= 
+&\= 
 \begin{bmatrix}
 x_1 \\
 y_1
@@ -82,7 +82,7 @@ $$
 $$
 \begin{aligned}
 \vec{r}_{hinge,2} &= \vec{R}_2 + A(\theta_2) \, \vec{s}_2 \\
-&= 
+&\= 
 \begin{bmatrix}
 x_2 \\
 y_2
