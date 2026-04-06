@@ -487,37 +487,37 @@ $$
 \left(y_3 + \frac{L}{2} \sin\theta_3 \right) + \left(x_3 + \frac{L}{2} \cos\theta_3\right) = 0
 $$
 $$
-y_3 + x_3 = \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) \qquad (b)
+y_3 + x_3 = -\frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) \qquad (b)
 $$
 
 Therefore, the system has been reduced to two equations and two unknowns. Adding equations $a$ and $b$:
 
 $$
-(y_3 - x_3) + (y_3 + x_3) = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right) + \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right)
+(y_3 - x_3) + (y_3 + x_3) = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right) - \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right)
 $$
 $$
-2 y_3 = \frac{L}{2} (2 \sin\theta_3)
+2 y_3 = -\frac{L}{2} (2 \cos\theta_3)
 $$
 $$
-y_3 = \frac{L}{2} \sin(\theta_3)
+y_3 = -\frac{L}{2} \cos\theta_3
 $$
 
 Subtracting equation $a$ from $b$:
 
 $$
-(y_3 + x_3) - (y_3 - x_3) = \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) - \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right)
+(y_3 + x_3) - (y_3 - x_3) = -\frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) - \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right)
 $$
 $$
-2x_3 = \frac{L}{2}(2\cos(\theta_3))
+2x_3 = -\frac{L}{2}(2\sin(\theta_3))
 $$
 $$
-x_3 = \frac{L}{2}\cos(\theta_3)
+x_3 = -\frac{L}{2}\sin\theta_3
 $$
 
 To find the piston positions, $y_3$ and $x_3 can be substituted back into constraint equations $C_5$, $C_6$, $C_7$, and $C_8$:
 
 $$
-x_1 = \frac{L}{2}\cos(\theta_3) - \frac{L}{2} \cos\theta_3
+x_1 = -\frac{L}{2}\sin\theta_3 - \frac{L}{2} \cos\theta_3 = -\frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right)
 $$
 
 ## Reproducing Results
