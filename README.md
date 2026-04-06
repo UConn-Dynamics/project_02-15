@@ -95,7 +95,7 @@ Now, the rigid bar has length $L$ and it's local $x$-axis runs along its length.
 $$
 \begin{aligned}
 \vec{r}_A &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3A} \\
-&=
+&\=
 \begin{bmatrix}
 x_3 \\
 y_3
@@ -108,7 +108,7 @@ y_3
 -\frac{L}{2} \\
 0
 \end{bmatrix} \\
-&=
+&\=
 \begin{bmatrix}
 x_3 - \frac{L}{2} \cos\theta_3 \\
 y_3 - \frac{L}{2} \sin\theta_3
@@ -121,7 +121,7 @@ End B connects to Piston 2 at local coordinates $\vec{s}_{3B} = \left[\frac{L}{2
 $$
 \begin{aligned}
 \vec{r}_B &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3B} \\
-&=
+&\=
 \begin{bmatrix}
 x_3 \\
 y_3
@@ -134,7 +134,7 @@ y_3
 \frac{L}{2} \\
 0
 \end{bmatrix} \\
-&=
+&\=
 \begin{bmatrix}
 x_3 + \frac{L}{2} \cos\theta_3 \\
 y_3 + \frac{L}{2} \sin\theta_3
@@ -175,7 +175,7 @@ $$
 x_1 \\
 y_1
 \end{bmatrix}
-&=
+&\=
 \begin{bmatrix}
 x_3 - \frac{L}{2} \cos\theta_3 \\
 y_3 - \frac{L}{2} \sin\theta_3
@@ -204,7 +204,7 @@ $$
 x_2 \\
 y_2
 \end{bmatrix}
-&=
+&\=
 \begin{bmatrix}
 x_3 + \frac{L}{2} \cos\theta_3 \\
 y_3 + \frac{L}{2} \sin\theta_3
@@ -245,7 +245,7 @@ C_7 \\
 C_8 \\
 C_9
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
 y_1 - x_1 \\
 \theta_1 - \pi/4 \\
@@ -257,7 +257,7 @@ x_2 - x_3 - \frac{L}{2} \cos\theta_3 \\
 y_2 - y_3 - \frac{L}{2} \sin\theta_3 \\
 \theta_3 - \omega t
 \end{bmatrix}
-= \vec{0}
+\= \vec{0}
 $$
 
 The constraint Jacobian, $C_q = \frac{\partial \vec{C}}{\partial \vec{q}}$ can now be evaluated as:
@@ -319,7 +319,7 @@ $$
 \dot{y}_3 \\
 \dot{\theta}_3 \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
 0 \\
 0 \\
@@ -427,7 +427,7 @@ $$
 \ddot{y}_3 \\
 \ddot{\theta}_3 \\
 \end{bmatrix}
-=
+\=
 \begin{bmatrix}
 0 \\
 0 \\
@@ -468,7 +468,11 @@ project_02-15/
 |
 ├───── src/     # Source Code
 |       |
-|       ├───── ...
+|       ├───── constraints.jl
+|       |
+|       ├───── kinematics.jl
+|       |
+|       └───── visualize.jl
 |
 ├───── main.jl                     # main driver
 |
