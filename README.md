@@ -445,14 +445,80 @@ $$
 
 The solution process for the system above will consist of 3 sequential steps at each time step $t_i$:
 
-**Step 01: Solve for Positions (Non-Linear)**
-- Find $\vec{q}$ such that $\vec{C}\left(\vec{q}, t\right) = \vec{0}$ using a non-linear iterative solver and the solution from the previous step as an initial guess.
+**Step 01: Solve for Positions (Nonlinear)**
+- Find $\vec{q}$ such that $\vec{C}\left(\vec{q}, t\right) = \vec{0}$ using a nonlinear iterative solver and the solution from the previous step as an initial guess.
 
 **Step 02: Solve for Velocities (Linear)**
 - Solve $C_q \, \dot{\vec{q}} = -\vec{C}_t$ for $\dot{\vec{q}}$ using positions found in Step 01.
 
-**Step 03: Solve for Accelerations (Non-Linear)**
+**Step 03: Solve for Accelerations (Linear)**
 - Solve $C_q \, \ddot{\vec{q}} = \vec{\gamma}$ for $\ddot{\vec{q}} using both positions found in Step 01 and velocities found in Step 02.
+
+The coordinates of the system above can also be solved for analytically. The analytical solution can be used as an initial guess for the numerical solver, and also as a benchmark to verify the numerical results. From constraint equations $C_5$ and $C_6$:
+
+$$
+x_1 = x_3 - \frac{L}{2} \cos\theta_3 \qquad (C_5)
+$$
+$$
+y_1 = y_3 - \frac{L}{2} \sin\theta_3 \qquad (C_6)
+$$
+
+Substituting $C_5$ and $C_6$ into $C_1 = y_1 - x_1 = 0$:
+
+$$
+\left(y_3 - \frac{L}{2} \sin\theta_3\right) - \left(x_3 - \frac{L}{2} \cos\theta_3\right) = 0
+$$
+$$
+y_3 - x_3 = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right) \qquad (a)
+$$
+
+From constraint equations $C_7$ and $C_8$:
+
+$$
+x_2 = x_3 + \frac{L}{2} \cos\theta_3 \qquad (C_7)
+$$
+$$
+y_2 = y_3 + \frac{L}{2} \sin\theta_3 \qquad (C_8)
+$$
+
+Substituting $C_7$ and $C_8$ into $C_3 = y_2 + x_2 = 0$:
+
+$$
+\left(y_3 + \frac{L}{2} \sin\theta_3 \right) + \left(x_3 + \frac{L}{2} \cos\theta_3\right) = 0
+$$
+$$
+y_3 + x_3 = \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) \qquad (b)
+$$
+
+Therefore, the system has been reduced to two equations and two unknowns. Adding equations $a$ and $b$:
+
+$$
+(y_3 - x_3) + (y_3 + x_3) = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right) + \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right)
+$$
+$$
+2 y_3 = \frac{L}{2} (2 \sin\theta_3)
+$$
+$$
+y_3 = \frac{L}{2} \sin(\theta_3)
+$$
+
+Subtracting equation $a$ from $b$:
+
+$$
+(y_3 + x_3) - (y_3 - x_3) = \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right) - \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right)
+$$
+$$
+2x_3 = \frac{L}{2}(2\cos(\theta_3))
+$$
+$$
+x_3 = \frac{L}{2}\cos(\theta_3)
+$$
+
+To find the piston positions, $y_3$ and $x_3 can be substituted back into constraint equations $C_5$, $C_6$, $C_7$, and $C_8$:
+
+$$
+x_1 = \frac{L}{2}\cos(\theta_3) - \frac{L}{2} \cos\theta_3
+$$
 
 ## Reproducing Results
 TBD
