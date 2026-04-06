@@ -71,7 +71,7 @@ For the system above, the hinges are mounted at the center of each piston. So th
 
 $$
 \begin{aligned}
-\vec{r}_{hinge,1} &= \vec{R}_1 + A(\theta_1) \, \vec{s}_1 \\\[6pt]
+\vec{r}_{hinge,1} &= \vec{R}_1 + A(\theta_1) \, \vec{s}_1 
 &= 
 \begin{bmatrix}
 x_1 \\
@@ -81,7 +81,7 @@ y_1
 $$
 $$
 \begin{aligned}
-\vec{r}_{hinge,2} &= \vec{R}_2 + A(\theta_2) \, \vec{s}_2 \\\[6pt]
+\vec{r}_{hinge,2} &= \vec{R}_2 + A(\theta_2) \, \vec{s}_2 
 &= 
 \begin{bmatrix}
 x_2 \\
@@ -94,7 +94,7 @@ Now, the rigid bar has length $L$ and it's local $x$-axis runs along its length.
 
 $$
 \begin{aligned}
-\vec{r}_A &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3A} \\\[6pt]
+\vec{r}_A &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3A} 
 &=
 \begin{bmatrix}
 x_3 \\
@@ -105,12 +105,12 @@ y_3
 \sin\theta_3 & \cos\theta_3
 \end{bmatrix}
 \begin{bmatrix}
--\frac{L}{2} \\\[6pt]
+-\frac{L}{2} 
 0
-\end{bmatrix} \\[12pt]
+\end{bmatrix} 
 &=
 \begin{bmatrix}
-x_3 - \frac{L}{2} \cos\theta_3 \\\[6pt]
+x_3 - \frac{L}{2} \cos\theta_3 
 y_3 - \frac{L}{2} \sin\theta_3
 \end{bmatrix}
 \end{aligned}
@@ -120,7 +120,7 @@ End B connects to Piston 2 at local coordinates $\vec{s}_{3B} = \left[\frac{L}{2
 
 $$
 \begin{aligned}
-\vec{r}_B &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3B} \\\[6pt]
+\vec{r}_B &= \vec{R}_3 + A(\theta_3) \, \vec{s}_{3B} 
 &=
 \begin{bmatrix}
 x_3 \\
@@ -131,12 +131,12 @@ y_3
 \sin\theta_3 & \cos\theta_3
 \end{bmatrix}
 \begin{bmatrix}
-\frac{L}{2} \\\[6pt]
+\frac{L}{2} 
 0
-\end{bmatrix} \\[12pt]
+\end{bmatrix} 
 &=
 \begin{bmatrix}
-x_3 + \frac{L}{2} \cos\theta_3 \\\[6pt]
+x_3 + \frac{L}{2} \cos\theta_3 
 y_3 + \frac{L}{2} \sin\theta_3
 \end{bmatrix}
 \end{aligned}
@@ -170,14 +170,14 @@ Next, a revolute (hinge) joint connects the center of Piston 1 to end A of the b
 
 $$
 \begin{aligned}
-\vec{r}_{hinge,1} &= \vec{r}_A \\\[6pt]
+\vec{r}_{hinge,1} &= \vec{r}_A 
 \begin{bmatrix}
 x_1 \\
 y_1
 \end{bmatrix}
 &=
 \begin{bmatrix}
-x_3 - \frac{L}{2} \cos\theta_3 \\\[6pt]
+x_3 - \frac{L}{2} \cos\theta_3 
 y_3 - \frac{L}{2} \sin\theta_3
 \end{bmatrix}
 \end{aligned}
@@ -199,14 +199,14 @@ A revolute (hinge) joint also connects the center of Piston 2 to end B of the ba
 
 $$
 \begin{aligned}
-\vec{r}_{hinge,2} &= \vec{r}_B \\\[6pt]
+\vec{r}_{hinge,2} &= \vec{r}_B 
 \begin{bmatrix}
 x_2 \\
 y_2
 \end{bmatrix}
 &=
 \begin{bmatrix}
-x_3 + \frac{L}{2} \cos\theta_3 \\\[6pt]
+x_3 + \frac{L}{2} \cos\theta_3 
 y_3 + \frac{L}{2} \sin\theta_3
 \end{bmatrix}
 \end{aligned}
@@ -235,26 +235,26 @@ Therefore, the full constraint vector can be written as:
 $$
 \vec{C}(\vec{q}, t) = 
 \begin{bmatrix}
-C_1 \\\[6pt]
-C_2 \\\[6pt]
-C_3 \\\[6pt]
-C_4 \\\[6pt]
-C_5 \\\[6pt]
-C_6 \\\[6pt]
-C_7 \\\[6pt]
-C_8 \\\[6pt]
+C_1 
+C_2 
+C_3 
+C_4 
+C_5 
+C_6 
+C_7 
+C_8 
 C_9
 \end{bmatrix}
 =
 \begin{bmatrix}
-y_1 - x_1 \\\[6pt]
-\theta_1 - \pi/4 \\\[6pt]
-y_2 + x_2 \\\[6pt]
-\theta_2 + \pi/4  \\\[6pt]
-x_1 - x_3 + \frac{L}{2} \cos\theta_3 \\\[6pt]
-y_1 - y_3 + \frac{L}{2} \sin\theta_3 \\\[6pt]
-x_2 - x_3 - \frac{L}{2} \cos\theta_3 \\\[6pt]
-y_2 - y_3 - \frac{L}{2} \sin\theta_3 \\\[6pt]
+y_1 - x_1 
+\theta_1 - \pi/4 
+y_2 + x_2 
+\theta_2 + \pi/4  
+x_1 - x_3 + \frac{L}{2} \cos\theta_3 
+y_1 - y_3 + \frac{L}{2} \sin\theta_3 
+x_2 - x_3 - \frac{L}{2} \cos\theta_3 
+y_2 - y_3 - \frac{L}{2} \sin\theta_3 
 \theta_3 - \omega t
 \end{bmatrix}
 = \vec{0}
@@ -265,14 +265,14 @@ The constraint Jacobian, $C_q = \frac{\partial \vec{C}}{\partial \vec{q}}$ can n
 $$
 C_q = 
 \begin{bmatrix}
--1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\\[6pt]
-1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 \\\[6pt]
-0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 \\\[6pt]
+-1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 
+1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
 $$
@@ -282,14 +282,14 @@ the partial time derivative vector, $\vec{C}_t = \frac{\partial \vec C}{\partial
 $$
 \vec{C}_t =
 \begin{bmatrix}
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
 -\omega 
 \end{bmatrix}
 $$
@@ -298,37 +298,37 @@ Thus, the velocity constraint equation $C_q \, \dot{\vec{q}} = - \vec{C}_t$ can 
 
 $$
 \begin{bmatrix}
--1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\\[6pt]
-1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 \\\[6pt]
-0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 \\\[6pt]
+-1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 
+1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
-\dot{x}_1 \\\[6pt]
-\dot{y}_1 \\\[6pt]
-\dot{\theta}_1 \\\[6pt]
-\dot{x}_2 \\\[6pt]
-\dot{y}_2 \\\[6pt]
-\dot{\theta}_2 \\\[6pt]
-\dot{x}_3 \\\[6pt]
-\dot{y}_3 \\\[6pt]
-\dot{\theta}_3 \\\[6pt]
+\dot{x}_1 
+\dot{y}_1 
+\dot{\theta}_1 
+\dot{x}_2 
+\dot{y}_2 
+\dot{\theta}_2 
+\dot{x}_3 
+\dot{y}_3 
+\dot{\theta}_3 
 \end{bmatrix}
 =
 \begin{bmatrix}
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
 -\omega 
 \end{bmatrix}
 $$
@@ -356,14 +356,14 @@ Since $\theta_3$ changes with time, $\frac{d}{dt} f\left(\theta_3\right) = \frac
 $$
 \frac{d C_q}{d t} = 
 \begin{bmatrix}
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3 \\\[6pt]
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3 
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 $$
@@ -373,14 +373,14 @@ and:
 $$
 \frac{d C_q}{dt} \, \dot{\vec{q}} = 
 \begin{bmatrix}
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
+0 
+0 
+0 
+0 
+\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
+\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
 0
 \end{bmatrix}
 $$
@@ -390,14 +390,14 @@ Since $\frac{d C_t}{d t} = \vec{0}$:
 $$
 \vec{\gamma} = 
 \begin{bmatrix}
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
+0 
+0 
+0 
+0 
+\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
+\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
 0
 \end{bmatrix}
 $$
@@ -406,37 +406,37 @@ and the final acceleration constraint equation can be constructed:
 
 $$
 \begin{bmatrix}
--1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\\[6pt]
-0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\\[6pt]
-1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 \\\[6pt]
-0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 \\\[6pt]
-0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 \\\[6pt]
+-1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 
+1 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & -\frac{L}{2}\sin\theta_3 
+0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 & \frac{L}{2}\cos\theta_3 
+0 & 0 & 0 & 1 & 0 & 0 & -1 & 0 & \frac{L}{2}\sin\theta_3 
+0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 & -\frac{L}{2}\cos\theta_3 
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
-\ddot{x}_1 \\\[6pt]
-\ddot{y}_1 \\\[6pt]
-\ddot{\theta}_1 \\\[6pt]
-\ddot{x}_2 \\\[6pt]
-\ddot{y}_2 \\\[6pt]
-\ddot{\theta}_2 \\\[6pt]
-\ddot{x}_3 \\\[6pt]
-\ddot{y}_3 \\\[6pt]
-\ddot{\theta}_3 \\\[6pt]
+\ddot{x}_1 
+\ddot{y}_1 
+\ddot{\theta}_1 
+\ddot{x}_2 
+\ddot{y}_2 
+\ddot{\theta}_2 
+\ddot{x}_3 
+\ddot{y}_3 
+\ddot{\theta}_3 
 \end{bmatrix}
 =
 \begin{bmatrix}
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-0 \\\[6pt]
-\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
-\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 \\\[6pt]
+0 
+0 
+0 
+0 
+\left(\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
+\left(-\frac{L}{2}\cos\theta_3\right)\dot{\theta}_3^2 
+\left(-\frac{L}{2}\sin\theta_3\right)\dot{\theta}_3^2 
 0
 \end{bmatrix}
 $$
