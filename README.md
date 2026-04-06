@@ -514,10 +514,79 @@ $$
 x_3 = -\frac{L}{2}\sin\theta_3
 $$
 
-To find the piston positions, $y_3$ and $x_3 can be substituted back into constraint equations $C_5$, $C_6$, $C_7$, and $C_8$:
+To find the piston positions, $y_3$ and $x_3$ can be substituted back into constraint equations $C_5$, $C_6$, $C_7$, and $C_8$:
 
 $$
 x_1 = -\frac{L}{2}\sin\theta_3 - \frac{L}{2} \cos\theta_3 = -\frac{L}{2}\left(\sin\theta_3 + \cos\theta_3\right)
+$$
+$$
+y_1 = -\frac{L}{2} \cos\theta_3 - \frac{L}{2} \sin\theta_3 = -\frac{L}{2}\left(\cos\theta_3 + \sin\theta_3 \right) = x_1
+$$
+$$
+x_2 = -\frac{L}{2}\sin\theta_3 + \frac{L}{2} \cos\theta_3 = \frac{L}{2} \left(\cos\theta_3 - \sin\theta_3 \right)
+$$
+$$
+y_2 = -\frac{L}{2} \cos\theta_3 + \frac{L}{2} \sin\theta_3 = \frac{L}{2} \left(\sin\theta_3 - \cos\theta_3 \right) = -x_2
+$$
+
+To find the analytical velocities, each position above can be differentiated with respect to time:
+
+$$
+\dot{x}_1 = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right)\omega
+$$
+$$
+\dot{y}_1 = \dot{x}_1 = \frac{L}{2}\left(\sin\theta_3 - \cos\theta_3\right)\omega
+$$
+$$
+\dot{x}_2 = -\frac{L}{2}\left(\sin\theta_3 + \cos\theta_3 \right)\omega
+$$
+$$
+\dot{y}_2 = -\dot{x}_2 = \frac{L}{2}\left(\sin\theta_3 + \cos\theta_3 \right)\omega
+$$
+$$
+\dot{x}_3 = -\frac{L}{2} \cos\theta_3 \omega
+$$
+$$
+\dot{y}_3 = \frac{L}{2} \sin\theta_3 \omega
+$$
+$$
+\dot{\theta}_1 = 0
+$$
+$$
+\dot{\theta}_2 = 0
+$$
+$$
+\dot{\theta}_3 = \omega
+$$
+
+To find the analytical accelerations, each velocity above can be differentiated with respect to time:
+
+$$
+\ddot{x}_1 = \frac{L}{2} \left(\cos\theta_3 + \sin\theta_3 \right)\omega^2
+$$
+$$
+\ddot{y}_1 = \ddot{x}_1 = \frac{L}{2} \left(\cos\theta_3 + \sin\theta_3 \right)\omega^2
+$$
+$$
+\ddot{x}_2 = \frac{L}{2} \left(\sin\theta_3 - \cos\theta_3 \right)\omega^2
+$$
+$$
+\ddot{y}_2 = -\ddot{x}_2 = -\frac{L}{2} \left(\sin\theta_3 - \cos\theta_3 \right)\omega^2
+$$
+$$
+\ddot{x}_3 = \frac{L}{2} \sin\theta_3 \omega^2
+$$
+$$
+\ddot{y}_3 = \frac{L}{2} \cos\theta_3 \omega^2
+$$
+$$
+\ddot{\theta}_1 = 0
+$$
+$$
+\ddot{\theta}_2 = 0
+$$
+$$
+\ddot{\theta}_3 = 0
 $$
 
 ## Reproducing Results

@@ -172,10 +172,105 @@ function gamma_accel(q, dq)
 end
 
 # ----------------------------------------------------------------
+# Analytical Position Solver
+# ----------------------------------------------------------------
+
+"""
+    q_analytical(t)
+
+Compute the exact analytical solution for q at a given time step.
+"""
+function q_analytical(t)
+
+    theta_3 = omega_drive * t 
+    stheta = sin(theta_3)               # pre-compute sin(theta_3) for efficiency
+    ctheta = cos(theta_3)               # pre-compute cos(theta_3) for efficiency
+
+    x_3 = -half_L * stheta              # bar center x-position
+    y_3 = -half_L * ctheta              # bar center y-position
+
+    x_1 = -half_L * (stheta + ctheta)   # piston 1 center x-position
+    y_1 = -half_L * (stheta + ctheta)   # piston 1 center y-position (= x_1)
+    theta_1 = pi / 4                    # piston 1 orientation 
+
+    x_2 = half_L * (ctheta - stheta)    # piston 2 center x-position
+    y_2 = half_L * (stheta - ctheta)    # piston 2 center y-position (= -x_2)
+    theta_2 = -pi / 4                   # piston 3 orientation
+
+    return [x_1, y_1, theta_1, x_2, y_2, theta_2, x_3, y_3, theta_3] # return full coordinate vector
+
+end
+
+# ----------------------------------------------------------------
+# Analytical Velocity Solver
+# ----------------------------------------------------------------
+
+"""
+    dq_analytical(t)
+
+Compute the exact analytical solution for dq at a given time step.
+"""
+
+function dq_analytical(t)
+
+    theta_3 = omega_drive * t 
+    stheta = sin(theta_3)               # pre-compute sin(theta_3) for efficiency
+    ctheta = cos(theta_3)               # pre-compute cos(theta_3) for efficiency
+
+    dx_3 = -half_L * ctheta * omega_drive     # bar center x-velocity
+    dy_3 = half_L * stheta * omega_drive      # bar center y-velocity
+    dtheta_3 = omega_drive
+    
+    dx_1 = half_L * (stheta - ctheta) * omega_drive     # piston 1 center x-velocity
+    dy_1 = half_L * (stheta - ctheta) * omega_drive     # piston 1 center y-velocity (= dx_1)
+    dtheta_1 = 0.0
+    
+    dx_2 = -half_L * (stheta + ctheta) * omega_drive    # piston 2 center x-velocity
+    dy_2 = half_L * (stheta + ctheta) * omega_drive     # piston 2 center y-velocity (= -dx_2)
+    dtheta_2 = 0.0
+
+    return [dx_1, dy_1, dtheta_1, dx_2, dy_2, dtheta_2, dx_3, dy_3, dtheta_3]
+
+end
+
+# ----------------------------------------------------------------
+# Analytical Acceleration Solver
+# ----------------------------------------------------------------
+
+"""
+    ddq_analytical(t)
+
+Compute the exact analytical solution for ddq at a given time step.
+"""
+
+function ddq_analytical(t)
+
+    theta_3 = omega_drive * t 
+    stheta = sin(theta_3)               # pre-compute sin(theta_3) for efficiency
+    ctheta = cos(theta_3)               # pre-compute cos(theta_3) for efficiency
+
+    ddx_3 = half_L * stheta * omega_drive^2     # bar center x-acceleration
+    ddy_3 = half_L * ctheta * omega_drive^2     # bar center y-acceleration
+    ddtheta_3 = 0.0
+
+    ddx_1 = half_L * (ctheta + stheta) * omega_drive^2     # piston 1 center x-acceleration
+    ddy_2 = half_L * (ctheta + stheta) * omega_drive^2     # piston 1 center x-acceleration (= ddx_1)
+    ddtheta_1 = 0.0
+
+    ddx_2 = half_L * (stheta - ctheta) * omega_drive^2     # piston 2 center x-acceleration
+    ddy_2 = -half_L * (stheta - ctheta) * omega_drive^2    # piston 2 center x-acceleration (= -ddx_2)
+    ddtheta_2 = 0.0
+
+    return [ddx_1, ddx_1, ddtheta_1, ddx_2, ddx_2, ddtheta_2, ddx_3, ddx_3, ddtheta_3]
+
+end
+
+# ----------------------------------------------------------------
 # Exported Functions/Parameters
 # ----------------------------------------------------------------
 
 export C_eqs, C_nonlinear, Cq_jacobian, Ct_partial, gamma_accel
+export q_analytical, dq_analytical, ddq_analytical
 export L, omega_drive, half_L
 
 end
