@@ -445,13 +445,13 @@ $$
 
 The solution process for the system above will consist of 3 sequential steps at each time step $t_i$:
 
-### Step 01: Solve for Positions (Non-Linear)
+**Step 01: Solve for Positions (Non-Linear)**
 - Find $\vec{q}$ such that $\vec{C}\left(\vec{q}, t\right) = \vec{0}$ using a non-linear iterative solver and the solution from the previous step as an initial guess.
 
-### Step 02: Solve for Velocities (Linear)
+**Step 02: Solve for Velocities (Linear)**
 - Solve $C_q \, \dot{\vec{q}} = -\vec{C}_t$ for $\dot{\vec{q}}$ using positions found in Step 01.
 
-### Step 03: Solve for Accelerations (Non-Linear)
+**Step 03: Solve for Accelerations (Non-Linear)**
 - Solve $C_q \, \ddot{\vec{q}} = \vec{\gamma}$ for $\ddot{\vec{q}} using both positions found in Step 01 and velocities found in Step 02.
 
 ## Reproducing Results
