@@ -90,7 +90,7 @@ y_2
 \end{aligned}
 $$
 
-Now, the rigid bar has length $L$ and it's local $x$-axis runs along its length. The center of the bar in global coordinates can be expressed as $\vec{R}_{3} = [x_3, y_3]^T$. End A connects to Piston 1 at local coordinates $\vec{s}_{3A} = \left[-\frac{L}{2}, 0\right]^T$. In global coordinates, this can be expressed as:
+Now, the rigid bar has length $L$ and it's local $x$-axis runs along its length. The center of the bar in global coordinates can be expressed as $\vec{R}\_{3} = [x_3, y_3]^T$. End A connects to Piston 1 at local coordinates $\vec{s}_{3A} = \left[-\frac{L}{2}, 0\right]^T$. In global coordinates, this can be expressed as:
 
 $$
 \begin{aligned}
