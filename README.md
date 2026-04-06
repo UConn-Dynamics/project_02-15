@@ -31,6 +31,8 @@ TBD
 
 ## Derivations
 
+**Note:** the following derivations use GitHub-compatible Markdown/LaTeX formatting. Certain expressions (e.g., subscripts or matrix notation) may need modification for standard LaTeX/Markdown environments.
+
 In planar (2D) multibody dynamics, each unconstrained body has 3 degrees of freedom:
 - Translation in the $x$-direction
 - Translation in the $Y$-direction
