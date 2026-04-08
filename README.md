@@ -590,10 +590,22 @@ $$
 $$
 
 ## Reproducing Results
-TBD
+From the project directory, run:
+
+```bash
+julia main.jl 
+```
+
+The program may take a few minutes to run. All final plots are output to the `results/` directory.
 
 ## Project Dependencies
-TBD
+This project was developed and tested with **Julia version 1.12.4**
+
+The following packages are required:
+- `NonlinearSolve`
+- `LinearAlgebra`
+- `Plots`
+- `Measures`
 
 ## Project Structure
 ```
@@ -603,13 +615,13 @@ project_02-15/
 |
 ├───── notes/   # hand calculations
 |
-├───── src/     # Source Code
+├───── src/     # source Code
 |       |
-|       ├───── constraints.jl
+|       ├───── constraints.jl      # constraint equations and analytical solutions
 |       |
-|       ├───── kinematics.jl
+|       ├───── kinematics.jl       # position, velocity, and acceleration solvers
 |       |
-|       └───── visualize.jl
+|       └───── visualize.jl        # plotting and animation functions
 |
 ├───── main.jl                     # main driver
 |
