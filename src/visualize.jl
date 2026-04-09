@@ -352,7 +352,7 @@ function plot_piston_paths(time, q_all; filename="results/piston_paths.png")
     track1_x = [-track_len * cos(alpha_1), track_len * cos(alpha_1)]
 
     # y-coordinates of endpoints
-    track1_y = [-track_len * sin(alpha_1), track_len * cos(alpha_1)]
+    track1_y = [-track_len * sin(alpha_1), track_len * sin(alpha_1)]
 
     # -45 deg track
     alpha_2 = -pi / 4
@@ -361,7 +361,7 @@ function plot_piston_paths(time, q_all; filename="results/piston_paths.png")
     track2_x = [-track_len * cos(alpha_2), track_len * cos(alpha_2)]
 
     # y-coordinates of endpoints
-    track2_y = [-track_len * sin(alpha_2), track_len * cos(alpha_2)]
+    track2_y = [-track_len * sin(alpha_2), track_len * sin(alpha_2)]
 
     # plot the tracks
     plot!(p, track1_x, track1_y, color=:gray, lw=2, ls=:dash, label="")
@@ -393,7 +393,7 @@ end
 """
     plot_bar_path(time, q_all; filename="results/bar_center_path.png")
 
-Plot the (x, y) trajectory of the bar center, which traces a circle of radius L/2 centered at the orign.
+Plot the (x, y) trajectory of the bar center, which traces a circle of radius L/2 centered at the origin.
 """
 
 function plot_bar_path(time, q_all; filename="results/bar_center_path.png")
@@ -401,6 +401,7 @@ function plot_bar_path(time, q_all; filename="results/bar_center_path.png")
     p = plot(
         q_all[:, 7], q_all[:, 8],
         lw=2, color=:blue, label="Bar Center",
+        aspect_ratio=:equal,
         xlabel="x_3 (m)", ylabel="y_3 (m)",
         title="Bar Center Trajectory"
     )

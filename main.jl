@@ -45,9 +45,9 @@ function main()
     # ----- Validate Against Analytical Solution -------------------------
     println("\nValidating against analytical solution...")
     max_q_err, max_dq_err, max_ddq_err = compute_errors(time, q_all, dq_all, ddq_all)
-    println(" Max position error:              $(max_q_err)")
-    println(" Max velocity error:              $(max_dq_err)")
-    println(" Max acceleration error:          $(max_ddq_err)")
+    println(" Max position error:              $(round(max_q_err, digits=14))")
+    println(" Max velocity error:              $(round(max_dq_err, digits=14))")
+    println(" Max acceleration error:          $(round(max_ddq_err, digits=14))")
 
     # check that errors are effectively zero
     if max_q_err < 1e-10 && max_dq_err < 1e-10 && max_ddq_err < 1e-10
@@ -64,7 +64,7 @@ function main()
         residual = sqrt(sum(C_val .^2))              # Euclidean norm
         max_residual = max(max_residual, residual)   # update max
     end
-    println(" Max constraint residual: $(max_residual)")
+    println(" Max constraint residual: $(round(max_residual, digits=14))")
 
     # ----- Generate Static Plots ----------------------------------------
     println("\nGenerating plots...")
