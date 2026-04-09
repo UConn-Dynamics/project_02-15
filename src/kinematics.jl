@@ -80,7 +80,7 @@ function solve_acceleration(q, dq, t)
     # build constraint Jacobian 
     Cq = Cq_jacobian(q)
 
-    # build RHS of the velocity constraint equation
+    # build RHS of the acceleration constraint equation
     rhs = gamma_accel(q, dq)
 
     # solve the linear system

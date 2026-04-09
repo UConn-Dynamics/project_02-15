@@ -51,7 +51,7 @@ function main()
 
     # check that errors are effectively zero
     if max_q_err < 1e-10 && max_dq_err < 1e-10 && max_ddq_err < 1e-10
-        println(" All arrors are within floating point tolerance.")
+        println(" All errors are within floating point tolerance.")
     else
         println(" Errors exceed expected tolerance, check implementation!")
     end

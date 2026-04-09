@@ -7,7 +7,7 @@
 ![Dual slider kinematics project](https://raw.githubusercontent.com/cooperrc/me5180-project_02/refs/heads/main/dual-slider.svg)
 
 In this project, a rigid bar is connected to two sliding pistons along
-the diagonal tracks. As the pistons move along the tracks, the rigid bar rotates at a constant rate, $\dot{\theta}_3 = 2~rad/s$. The figure above has three _relative_ ccoordinate systems that move with the bodies:
+the diagonal tracks. As the pistons move along the tracks, the rigid bar rotates at a constant rate, $\dot{\theta}_3 = 2~rad/s$. The figure above has three _relative_ coordinate systems that move with the bodies:
 
 1. $x_1-y_1-$ describes piston 1 position and orientation, $\theta_1$
 2. $x_2-y_2-$ describes piston 2 position and orientation, $\theta_2$
@@ -24,10 +24,51 @@ In this project, you need to
 3. visualize the motion of the system as the rigid bar goes through at least one full rotation
 
 ## Results
-TBD
+
+### Mechanism Animation (2 Full Rotations)
+<p align="center">
+    <img src="results/mechanism.gif" width = 600>
+</p>
+
+### Kinematic Dashboard 
+<p align="center">
+    <img src="results/dashboard.gif" width = 750>
+</p>
+
+### Positions vs. Time
+<p align="center">
+    <img src="results/positions_vs_time.png" width = 700>
+</p>
+
+### Velocities vs. Time
+<p align="center">
+    <img src="results/velocities_vs_time.png" width = 700>
+</p>
+
+### Accelerations vs. Time
+<p align="center">
+    <img src="results/accelerations_vs_time.png" width = 700>
+</p>
+
+### Piston Trajectories
+<p align="center">
+    <img src="results/piston_paths.png" width = 500>
+</p>
+
+### Bar Center Trajectory
+<p align="center">
+    <img src="results/bar_center_path.png" width = 500>
+</p>
 
 ## Conclusions
-TBD
+
+Several conclusions can be drawn from the results above. First, the piston trajectories confirm that Piston 1 slides along the $+45^{\circ}$ track and Piston 2 slides along the $-45^{\circ}$ track, as enforced by the prismatic joint constraints. The bar center traces a perfect circle of radius $L/2 = 0.05$ m. 
+
+From the position plots, one can observe that $x_1$, $y_1$, $\theta_1$, and $x_2$, $y_2$, $\theta_2$ are consistent with their respective constraint equations. This can also be observed for all generalized parameters in the velocity and acceleration plots, thus confirming that the constraints were implemented correctly and the simulation returned a valid solution. Furthermore, since the bar rotates at a constant rate, the position, velocity, and acceleration plots all exhibit sinusoidal behavior.  
+
+The analytical validation printout demonstrates that the numerical solver (using the NonlinearSolve package for positions and the backslash operator for velocities and accelerations) agrees with the analytical solution to within floating point precision. The constraint residual also remains effectively zero throughout the simulation, verifying that all constraints are satisfied at every time step.
+
+Overall, this project demonstrates the capabilities of using constraint-based methods to solve kinematics problems. By creating constraint equations, computing their Jacobian, and solving for the system's position, velocity and acceleration at each time step, one can analyze complex problems without deriving explicit equations of motion. Furthermore, this general framework can be extended to systems with more bodies and/or constraints!
 
 ## Derivations
 
@@ -588,6 +629,8 @@ $$
 $$
 \ddot{\theta}_3 = 0
 $$
+
+This confirms that the bar center traces a circle of radius $L/2$ and the pistons oscillate along their tracks.
 
 ## Reproducing Results
 From the project directory, run:

@@ -127,7 +127,7 @@ function animate_mechanism(time, q_all; filename="results/mechanism.gif", fps=30
     # compute axis limits
     all_x = vcat(q_all[:, 1], q_all[:, 4], q_all[:, 7])     # all x-coordinates
     all_y = vcat(q_all[:, 2], q_all[:, 5], q_all[:, 8])     # all y-coordinates
-    pad   = 0.04                                            # padding around dq_analytical
+    pad   = 0.04                                            # padding around data
     xl    =(minimum(all_x) - pad, maximum(all_x) + pad)     # x-axis limits
     yl    =(minimum(all_y) - pad, maximum(all_y) + pad)     # y-axis limits
 
@@ -233,7 +233,7 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     plot!(p1r, time, dq_all[:, 3], label="theta_dot_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = dq_all[1, 3]          # pull constant value of theta
     ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
-    ylabel!(p1r, "Anglular Velocity (rad/s)")
+    ylabel!(p1r, "Angular Velocity (rad/s)")
     title!(p1, "Piston 1 Velocities")
 
      # ----- Panel 2: Piston 2 -----
@@ -244,7 +244,7 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     plot!(p2r, time, dq_all[:, 6], label="theta_dot_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = dq_all[1, 6]          # pull constant value of theta
     ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
-    ylabel!(p2r, "Anglular Velocity (rad/s)")
+    ylabel!(p2r, "Angular Velocity (rad/s)")
     title!(p2, "Piston 2 Velocities")
 
      # ----- Panel 3: Piston 3 -----
@@ -255,7 +255,7 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     plot!(p3r, time, dq_all[:, 9], label="theta_dot_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = dq_all[1, 9]          # pull constant value of theta
     ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
-    ylabel!(p3r, "Anglular Velocity (rad/s)")
+    ylabel!(p3r, "Angular Velocity (rad/s)")
     title!(p3, "Bar Velocities")
 
     # combine into 3-row layout
@@ -287,7 +287,7 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     plot!(p1r, time, ddq_all[:, 3], label="theta_ddot_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = ddq_all[1, 3]          # pull constant value of theta
     ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
-    ylabel!(p1r, "Anglular Acceleration (rad/s^2)")
+    ylabel!(p1r, "Angular Acceleration (rad/s^2)")
     title!(p1, "Piston 1 Accelerations")
 
      # ----- Panel 2: Piston 2 -----
@@ -298,7 +298,7 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     plot!(p2r, time, ddq_all[:, 6], label="theta_ddot_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = ddq_all[1, 6]          # pull constant value of theta
     ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
-    ylabel!(p2r, "Anglular Acceleration (rad/s^2)")
+    ylabel!(p2r, "Angular Acceleration (rad/s^2)")
     title!(p2, "Piston 2 Accelerations")
 
      # ----- Panel 3: Piston 3 -----
@@ -309,7 +309,7 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     plot!(p3r, time, ddq_all[:, 9], label="theta_ddot_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = ddq_all[1, 9]          # pull constant value of theta
     ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
-    ylabel!(p3r, "Anglular Acceleration (rad/s^2)")
+    ylabel!(p3r, "Angular Acceleration (rad/s^2)")
     title!(p3, "Bar Accelerations")
 
     # combine into 3-row layout
@@ -403,7 +403,8 @@ function plot_bar_path(time, q_all; filename="results/bar_center_path.png")
         lw=2, color=:blue, label="Bar Center",
         aspect_ratio=:equal,
         xlabel="x_3 (m)", ylabel="y_3 (m)",
-        title="Bar Center Trajectory"
+        title="Bar Center Trajectory",
+        legend=:outertopright
     )
 
     # mark start position
@@ -438,7 +439,7 @@ function animate_dashboard(time, q_all, dq_all, ddq_all; filename="results/dashb
     # compute axis limits for mechanism panel
     all_x = vcat(q_all[:, 1], q_all[:, 4], q_all[:, 7])     # all x-coordinates
     all_y = vcat(q_all[:, 2], q_all[:, 5], q_all[:, 8])     # all y-coordinates
-    pad   = 0.04                                            # padding around dq_analytical
+    pad   = 0.04                                            # padding around data
     xl    =(minimum(all_x) - pad, maximum(all_x) + pad)     # x-axis limits
     yl    =(minimum(all_y) - pad, maximum(all_y) + pad)     # y-axis limits
 
@@ -500,5 +501,3 @@ export plot_piston_paths, plot_bar_path
 export animate_dashboard
 
 end
-
-

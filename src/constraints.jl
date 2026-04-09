@@ -33,7 +33,7 @@ function C_eqs(q, t)
     theta_1    = q[3]     # orientation of Piston 01
     x_2        = q[4]     # x-position of Piston 02 center
     y_2        = q[5]     # y-position of Piston 02 center
-    theta_2    = q[6]     # orientation of Piston 01
+    theta_2    = q[6]     # orientation of Piston 02
     x_3        = q[7]     # x-position of bar center
     y_3        = q[8]     # y-position of barcenter
     theta_3    = q[9]     # orientation of the bar
@@ -195,7 +195,7 @@ function q_analytical(t)
 
     x_2 = half_L * (ctheta - stheta)    # piston 2 center x-position
     y_2 = half_L * (stheta - ctheta)    # piston 2 center y-position (= -x_2)
-    theta_2 = -pi / 4                   # piston 3 orientation
+    theta_2 = -pi / 4                   # piston 2 orientation
 
     return [x_1, y_1, theta_1, x_2, y_2, theta_2, x_3, y_3, theta_3] # return full coordinate vector
 
@@ -274,4 +274,3 @@ export q_analytical, dq_analytical, ddq_analytical
 export L, omega_drive, half_L
 
 end
-
