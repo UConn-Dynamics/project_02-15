@@ -2,6 +2,7 @@ module Visualize
 
 using Plots
 using Measures
+using LaTeXStrings
 
 using ..Constraints: L, half_L, omega_drive
 using ..Constraints: C_eqs, q_analytical, dq_analytical, ddq_analytical
@@ -174,33 +175,33 @@ function plot_positions(time, q_all; filename="results/positions_vs_time.png")
     theta_pad = 0.5     # padding for theta axis
 
     # ----- Panel 1: Piston 1 -----
-    p1 = plot(time, q_all[:, 1], label="x₁", lw=2, color=:blue, legend=:topleft)
-    plot!(p1, time, q_all[:, 2], label="y₁", lw=2, color=:orange)
+    p1 = plot(time, q_all[:, 1], label=L"x_1", lw=2, color=:blue, legend=:topleft)
+    plot!(p1, time, q_all[:, 2], label=L"y_1", lw=2, color=:orange)
     ylabel!(p1, "Position (m)")
     p1r = twinx(p1)
-    plot!(p1r, time, q_all[:, 3], label="θ₁", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p1r, time, q_all[:, 3], label=L"\theta_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = q_all[1, 3]          # pull constant value of theta
     ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
     ylabel!(p1r, "Angle (rad)")
     title!(p1, "Piston 1 Coordinates")
 
      # ----- Panel 2: Piston 2 -----
-    p2 = plot(time, q_all[:, 4], label="x₂", lw=2, color=:blue, legend=:topleft)
-    plot!(p2, time, q_all[:, 5], label="y₂", lw=2, color=:orange)
+    p2 = plot(time, q_all[:, 4], label=L"x_2", lw=2, color=:blue, legend=:topleft)
+    plot!(p2, time, q_all[:, 5], label=L"y_2", lw=2, color=:orange)
     ylabel!(p2, "Position (m)")
     p2r = twinx(p2)
-    plot!(p2r, time, q_all[:, 6], label="θ₂", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p2r, time, q_all[:, 6], label=L"\theta_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = q_all[1, 6]          # pull constant value of theta
     ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
     ylabel!(p2r, "Angle (rad)")
     title!(p2, "Piston 2 Coordinates")
 
-     # ----- Panel 3: Piston 3 -----
-    p3 = plot(time, q_all[:, 7], label="x₃", lw=2, color=:blue, legend=:topleft)
-    plot!(p3, time, q_all[:, 8], label="y₃", lw=2, color=:orange)
+     # ----- Panel 3: Bar ----------
+    p3 = plot(time, q_all[:, 7], label=L"x_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, q_all[:, 8], label=L"y_3", lw=2, color=:orange)
     ylabel!(p3, "Position (m)")
     p3r = twinx(p3)
-    plot!(p3r, time, q_all[:, 9], label="θ₃", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p3r, time, q_all[:, 9], label=L"\theta_3", lw=2, ls=:dash, color=:green, legend=:topright)
     ylabel!(p3r, "Angle (rad)")
     title!(p3, "Bar Coordinates")
 
@@ -226,33 +227,33 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     theta_pad = 0.5     # padding for theta axis
 
     # ----- Panel 1: Piston 1 -----
-    p1 = plot(time, dq_all[:, 1], label="ẋ₁", lw=2, color=:blue, legend=:topleft)
-    plot!(p1, time, dq_all[:, 2], label="ẏ₁", lw=2, color=:orange)
+    p1 = plot(time, dq_all[:, 1], label=L"\dot{x}_1", lw=2, color=:blue, legend=:topleft)
+    plot!(p1, time, dq_all[:, 2], label=L"\dot{y}_1", lw=2, color=:orange)
     ylabel!(p1, "Velocity (m/s)")
     p1r = twinx(p1)
-    plot!(p1r, time, dq_all[:, 3], label="θ̇₁", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p1r, time, dq_all[:, 3], label=L"\dot{\theta}_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = dq_all[1, 3]          # pull constant value of theta
     ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
     ylabel!(p1r, "Angular Velocity (rad/s)")
     title!(p1, "Piston 1 Velocities")
 
      # ----- Panel 2: Piston 2 -----
-    p2 = plot(time, dq_all[:, 4], label="ẋ₂", lw=2, color=:blue, legend=:topleft)
-    plot!(p2, time, dq_all[:, 5], label="ẏ₂", lw=2, color=:orange)
+    p2 = plot(time, dq_all[:, 4], label=L"\dot{x}_2", lw=2, color=:blue, legend=:topleft)
+    plot!(p2, time, dq_all[:, 5], label=L"\dot{y}_2", lw=2, color=:orange)
     ylabel!(p2, "Velocity (m/s)")
     p2r = twinx(p2)
-    plot!(p2r, time, dq_all[:, 6], label="θ̇₂", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p2r, time, dq_all[:, 6], label=L"\dot{\theta}_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = dq_all[1, 6]          # pull constant value of theta
     ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
     ylabel!(p2r, "Angular Velocity (rad/s)")
     title!(p2, "Piston 2 Velocities")
 
      # ----- Panel 3: Bar ----------
-    p3 = plot(time, dq_all[:, 7], label="ẋ₃", lw=2, color=:blue, legend=:topleft)
-    plot!(p3, time, dq_all[:, 8], label="ẏ₃", lw=2, color=:orange)
+    p3 = plot(time, dq_all[:, 7], label=L"\dot{x}_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, dq_all[:, 8], label=L"\dot{y}_3", lw=2, color=:orange)
     ylabel!(p3, "Velocity (m/s)")
     p3r = twinx(p3)
-    plot!(p3r, time, dq_all[:, 9], label="θ̇₃", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p3r, time, dq_all[:, 9], label=L"\dot{\theta}_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = dq_all[1, 9]          # pull constant value of theta
     ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
     ylabel!(p3r, "Angular Velocity (rad/s)")
@@ -280,36 +281,36 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     theta_pad = 0.5     # padding for theta axis
 
     # ----- Panel 1: Piston 1 -----
-    p1 = plot(time, ddq_all[:, 1], label="ẍ₁", lw=2, color=:blue, legend=:topleft)
-    plot!(p1, time, ddq_all[:, 2], label="ÿ₁", lw=2, color=:orange)
+    p1 = plot(time, ddq_all[:, 1], label=L"\ddot{x}_1", lw=2, color=:blue, legend=:topleft)
+    plot!(p1, time, ddq_all[:, 2], label=L"\ddot{y}_1", lw=2, color=:orange)
     ylabel!(p1, "Acceleration (m/s^2)")
     p1r = twinx(p1)
-    plot!(p1r, time, ddq_all[:, 3], label="θ̈₁", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p1r, time, ddq_all[:, 3], label=L"\ddot{\theta}_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = ddq_all[1, 3]          # pull constant value of theta
     ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
-    ylabel!(p1r, "Angular Acceleration (rad/s^2)")
+    ylabel!(p1r, "Angular Acceleration (rad/s²)")
     title!(p1, "Piston 1 Accelerations")
 
      # ----- Panel 2: Piston 2 -----
-    p2 = plot(time, ddq_all[:, 4], label="ẍ₂", lw=2, color=:blue, legend=:topleft)
-    plot!(p2, time, ddq_all[:, 5], label="ÿ₂", lw=2, color=:orange)
+    p2 = plot(time, ddq_all[:, 4], label=L"\ddot{x}_2", lw=2, color=:blue, legend=:topleft)
+    plot!(p2, time, ddq_all[:, 5], label=L"\ddot{y}_2", lw=2, color=:orange)
     ylabel!(p2, "Acceleration (m/s^2)")
     p2r = twinx(p2)
-    plot!(p2r, time, ddq_all[:, 6], label="θ̈₂", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p2r, time, ddq_all[:, 6], label=L"\ddot{\theta}_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = ddq_all[1, 6]          # pull constant value of theta
     ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
-    ylabel!(p2r, "Angular Acceleration (rad/s^2)")
+    ylabel!(p2r, "Angular Acceleration (rad/s²)")
     title!(p2, "Piston 2 Accelerations")
 
      # ----- Panel 3: Bar ----------
-    p3 = plot(time, ddq_all[:, 7], label="ẍ₃", lw=2, color=:blue, legend=:topleft)
-    plot!(p3, time, ddq_all[:, 8], label="ÿ₃", lw=2, color=:orange)
+    p3 = plot(time, ddq_all[:, 7], label=L"\ddot{x}_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, ddq_all[:, 8], label=L"\ddot{y}_3", lw=2, color=:orange)
     ylabel!(p3, "Acceleration (m/s^2)")
     p3r = twinx(p3)
-    plot!(p3r, time, ddq_all[:, 9], label="θ̈₃", lw=2, ls=:dash, color=:green, legend=:topright)
+    plot!(p3r, time, ddq_all[:, 9], label=L"\ddot{\theta}_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = ddq_all[1, 9]          # pull constant value of theta
     ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
-    ylabel!(p3r, "Angular Acceleration (rad/s^2)")
+    ylabel!(p3r, "Angular Acceleration (rad/s²)")
     title!(p3, "Bar Accelerations")
 
     # combine into 3-row layout
@@ -373,7 +374,7 @@ function plot_piston_paths(time, q_all; filename="results/piston_paths.png")
     # plot piston 1 trajectory
     plot!(p, q_all[:, 1], q_all[:, 2], lw=2, color=:orange, label="Piston 1")
 
-    # plot piston 1 trajectory
+    # plot piston 2 trajectory
     plot!(p, q_all[:, 4], q_all[:, 5], lw=2, color=:green, label="Piston 2")
 
     # mark start positions
@@ -451,28 +452,28 @@ function animate_dashboard(time, q_all, dq_all, ddq_all; filename="results/dashb
         draw_mechanism!(p1, q_all[i, :])
 
         # ----- Panel 2: Piston Positions --------
-        p2 = plot(time[1:i], q_all[1:i, 1], label="x₁", lw=2, color=:orange, xlabel="t (s)", ylabel="Position (m)", title="Piston Positions",
+        p2 = plot(time[1:i], q_all[1:i, 1], label=L"x_1", lw=2, color=:orange, xlabel="t (s)", ylabel="Position (m)", title="Piston Positions",
                   xlim=(time[1], time[end]))
         
-        plot!(p2, time[1:i], q_all[1:i, 4], label="x₂", lw=2, color=:green)
+        plot!(p2, time[1:i], q_all[1:i, 4], label=L"x_2", lw=2, color=:green)
         scatter!(p2, [time[i]], [q_all[i, 1]], color=:orange, ms=4, label="")
         scatter!(p2, [time[i]], [q_all[i, 4]], color=:green, ms=4, label="")
         plot!(p2, legend=:outertopright)
 
         # ----- Panel 3: Piston Velocities -------
-        p3 = plot(time[1:i], dq_all[1:i, 1], label="ẋ₁", lw=2, color=:orange, xlabel="t (s)", ylabel="Velocity (m/s)", title="Piston Velocities",
+        p3 = plot(time[1:i], dq_all[1:i, 1], label=L"\dot{x}_1", lw=2, color=:orange, xlabel="t (s)", ylabel="Velocity (m/s)", title="Piston Velocities",
                   xlim=(time[1], time[end]))
         
-        plot!(p3, time[1:i], dq_all[1:i, 4], label="ẋ₂", lw=2, color=:green)
+        plot!(p3, time[1:i], dq_all[1:i, 4], label=L"\dot{x}_2", lw=2, color=:green)
         scatter!(p3, [time[i]], [dq_all[i, 1]], color=:orange, ms=4, label="")
         scatter!(p3, [time[i]], [dq_all[i, 4]], color=:green, ms=4, label="")
         plot!(p3, legend=:outertopright)
 
         # ----- Panel 4: Piston Accelerations ----
-        p4 = plot(time[1:i], ddq_all[1:i, 1], label="ẍ₁", lw=2, color=:orange, xlabel="t (s)", ylabel="Acceleration (m/s^2)", title="Piston Accelerations",
+        p4 = plot(time[1:i], ddq_all[1:i, 1], label=L"\ddot{x}_1", lw=2, color=:orange, xlabel="t (s)", ylabel="Acceleration (m/s^2)", title="Piston Accelerations",
                   xlim=(time[1], time[end]))
         
-        plot!(p4, time[1:i], ddq_all[1:i, 4], label="ẍ₂", lw=2, color=:green)
+        plot!(p4, time[1:i], ddq_all[1:i, 4], label=L"\ddot{x}_2", lw=2, color=:green)
         scatter!(p4, [time[i]], [ddq_all[i, 1]], color=:orange, ms=4, label="")
         scatter!(p4, [time[i]], [ddq_all[i, 4]], color=:green, ms=4, label="")
         plot!(p4, legend=:outertopright)

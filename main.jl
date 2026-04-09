@@ -13,6 +13,8 @@ using .Kinematics
 using .Visualize
 using Plots
 
+default(legendfontsize=10)
+
 # ------------------------------------------------------------------------
 # Main Simulation
 # ------------------------------------------------------------------------

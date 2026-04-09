@@ -649,6 +649,7 @@ The following packages are required:
 - `LinearAlgebra`
 - `Plots`
 - `Measures`
+- `LaTeXStrings`
 
 ## Project Structure
 ```
