@@ -35,16 +35,16 @@ Draw the dual-slider crank mechanism at a given configuration.
     track1_x = [-track_len * cos(alpha_1), track_len * cos(alpha_1)]
 
     # y-coordinates of endpoints
-    track1_y = [-track_len * sin(alpha_1), track_len * cos(alpha_1)]
+    track1_y = [-track_len * sin(alpha_1), track_len * sin(alpha_1)]
 
     # -45 deg track
-    alpha_2 = =-pi / 4
+    alpha_2 = -pi / 4
 
     # x-coordinates of endpoints
     track2_x = [-track_len * cos(alpha_2), track_len * cos(alpha_2)]
 
     # y-coordinates of endpoints
-    track2_y = [-track_len * sin(alpha_2), track_len * cos(alpha_2)]
+    track2_y = [-track_len * sin(alpha_2), track_len * sin(alpha_2)]
 
     # plot the tracks
     plot!(p, track1_x, track1_y, color=:gray, lw=2, ls=:dash, label="")
@@ -63,8 +63,8 @@ Draw the dual-slider crank mechanism at a given configuration.
     piston_w = 0.025 
     piston_h = 0.008
 
-    draw_piston!(p, x_1, y_1, theta_1, pistom_w, piston_h, :orange)     # draw piston 01
-    draw_piston!(p, x_2, y_2, theta_2, pistom_w, piston_h, :green)     # draw piston 02
+    draw_piston!(p, x_1, y_1, theta_1, piston_w, piston_h, :orange)     # draw piston 01
+    draw_piston!(p, x_2, y_2, theta_2, piston_w, piston_h, :green)     # draw piston 02
 
     # ----- Draw Joint Markers -----
     scatter!(p, [x_1], [y_1], color=:red,   ms=5, markershape=:circle,  label="")     # piston 1
@@ -149,7 +149,7 @@ function animate_mechanism(time, q_all; filename="results/mechanism.gif", fps=30
         )
 
         # draw mechanism at each time step
-        draw_mechanism(p, q_i)
+        draw_mechanism!(p, q_i)
 
     end
 
@@ -180,7 +180,7 @@ function plot_positions(time, q_all; filename="results/positions_vs_time.png")
     p1r = twinx(p1)
     plot!(p1r, time, q_all[:, 3], label="theta_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = q_all[1, 3]          # pull constant value of theta
-    ylims!(p1r, (theta_1_val - pad, theta_1_val + pad))
+    ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
     ylabel!(p1r, "Angle (rad)")
     title!(p1, "Piston 1 Coordinates")
 
@@ -191,13 +191,13 @@ function plot_positions(time, q_all; filename="results/positions_vs_time.png")
     p2r = twinx(p2)
     plot!(p2r, time, q_all[:, 6], label="theta_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = q_all[1, 6]          # pull constant value of theta
-    ylims!(p2r, (theta_2_val - pad, theta_2_val + pad))
+    ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
     ylabel!(p2r, "Angle (rad)")
     title!(p2, "Piston 2 Coordinates")
 
      # ----- Panel 3: Piston 3 -----
-    p3 = plot(time, q_all[:, 7], label="x_3", lw=2, color=:blue, legend=;:topleft)
-    plot!(p1, time, q_all[:, 8], label="y_3", lw=2, color=:orange)
+    p3 = plot(time, q_all[:, 7], label="x_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, q_all[:, 8], label="y_3", lw=2, color=:orange)
     ylabel!(p3, "Position (m)")
     p3r = twinx(p3)
     plot!(p3r, time, q_all[:, 9], label="theta_3", lw=2, ls=:dash, color=:green, legend=:topright)
@@ -232,7 +232,7 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     p1r = twinx(p1)
     plot!(p1r, time, dq_all[:, 3], label="theta_dot_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = dq_all[1, 3]          # pull constant value of theta
-    ylims!(p1r, (theta_1_val - pad, theta_1_val + pad))
+    ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
     ylabel!(p1r, "Anglular Velocity (rad/s)")
     title!(p1, "Piston 1 Velocities")
 
@@ -243,18 +243,18 @@ function plot_velocities(time, dq_all; filename="results/velocities_vs_time.png"
     p2r = twinx(p2)
     plot!(p2r, time, dq_all[:, 6], label="theta_dot_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = dq_all[1, 6]          # pull constant value of theta
-    ylims!(p2r, (theta_2_val - pad, theta_2_val + pad))
+    ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
     ylabel!(p2r, "Anglular Velocity (rad/s)")
     title!(p2, "Piston 2 Velocities")
 
      # ----- Panel 3: Piston 3 -----
-    p3 = plot(time, dq_all[:, 7], label="x_dot_3", lw=2, color=:blue, legend=;:topleft)
-    plot!(p1, time, dq_all[:, 8], label="y_dot_3", lw=2, color=:orange)
+    p3 = plot(time, dq_all[:, 7], label="x_dot_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, dq_all[:, 8], label="y_dot_3", lw=2, color=:orange)
     ylabel!(p3, "Velocity (m/s)")
     p3r = twinx(p3)
     plot!(p3r, time, dq_all[:, 9], label="theta_dot_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = dq_all[1, 9]          # pull constant value of theta
-    ylims!(p3r, (theta_3_val - pad, theta_3_val + pad))
+    ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
     ylabel!(p3r, "Anglular Velocity (rad/s)")
     title!(p3, "Bar Velocities")
 
@@ -286,7 +286,7 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     p1r = twinx(p1)
     plot!(p1r, time, ddq_all[:, 3], label="theta_ddot_1", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_1_val = ddq_all[1, 3]          # pull constant value of theta
-    ylims!(p1r, (theta_1_val - pad, theta_1_val + pad))
+    ylims!(p1r, (theta_1_val - theta_pad, theta_1_val + theta_pad))
     ylabel!(p1r, "Anglular Acceleration (rad/s^2)")
     title!(p1, "Piston 1 Accelerations")
 
@@ -297,18 +297,18 @@ function plot_accelerations(time, ddq_all; filename="results/accelerations_vs_ti
     p2r = twinx(p2)
     plot!(p2r, time, ddq_all[:, 6], label="theta_ddot_2", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_2_val = ddq_all[1, 6]          # pull constant value of theta
-    ylims!(p2r, (theta_2_val - pad, theta_2_val + pad))
+    ylims!(p2r, (theta_2_val - theta_pad, theta_2_val + theta_pad))
     ylabel!(p2r, "Anglular Acceleration (rad/s^2)")
     title!(p2, "Piston 2 Accelerations")
 
      # ----- Panel 3: Piston 3 -----
-    p3 = plot(time, ddq_all[:, 7], label="x_ddot_3", lw=2, color=:blue, legend=;:topleft)
-    plot!(p1, time, ddq_all[:, 8], label="y_ddot_3", lw=2, color=:orange)
+    p3 = plot(time, ddq_all[:, 7], label="x_ddot_3", lw=2, color=:blue, legend=:topleft)
+    plot!(p3, time, ddq_all[:, 8], label="y_ddot_3", lw=2, color=:orange)
     ylabel!(p3, "Acceleration (m/s^2)")
     p3r = twinx(p3)
     plot!(p3r, time, ddq_all[:, 9], label="theta_ddot_3", lw=2, ls=:dash, color=:green, legend=:topright)
     theta_3_val = ddq_all[1, 9]          # pull constant value of theta
-    ylims!(p3r, (theta_3_val - pad, theta_3_val + pad))
+    ylims!(p3r, (theta_3_val - theta_pad, theta_3_val + theta_pad))
     ylabel!(p3r, "Anglular Acceleration (rad/s^2)")
     title!(p3, "Bar Accelerations")
 
@@ -343,6 +343,8 @@ function plot_piston_paths(time, q_all; filename="results/piston_paths.png")
     )
 
     # draw track lines
+    track_len = 0.12
+
     # +45 deg track
     alpha_1 = pi / 4
 
@@ -353,7 +355,7 @@ function plot_piston_paths(time, q_all; filename="results/piston_paths.png")
     track1_y = [-track_len * sin(alpha_1), track_len * cos(alpha_1)]
 
     # -45 deg track
-    alpha_2 = =-pi / 4
+    alpha_2 = -pi / 4
 
     # x-coordinates of endpoints
     track2_x = [-track_len * cos(alpha_2), track_len * cos(alpha_2)]
@@ -404,7 +406,7 @@ function plot_bar_path(time, q_all; filename="results/bar_center_path.png")
     )
 
     # mark start position
-    scatter!(p, [q_all[1, 7]], [q_all[1, 8]], color:=red, ms=6, label="Start")
+    scatter!(p, [q_all[1, 7]], [q_all[1, 8]], color=:red, ms=6, label="Start")
 
     # draw reference circle of radius L/2
     theta_ref = LinRange(0, 2*pi, 100)         # generate angles for reference circle
@@ -438,12 +440,6 @@ function animate_dashboard(time, q_all, dq_all, ddq_all; filename="results/dashb
     pad   = 0.04                                            # padding around dq_analytical
     xl    =(minimum(all_x) - pad, maximum(all_x) + pad)     # x-axis limits
     yl    =(minimum(all_y) - pad, maximum(all_y) + pad)     # y-axis limits
-
-    # compute axis limits for other panels (NOT USED, REMOVE THIS)
-    x_1_lim = (minimum(q_all[:, 1]) - 0.005, maximum(q_all[:, 1]) + 0.005)     # piston 1 position
-    x_2_lim = (minimum(q_all[:, 4]) - 0.005, maximum(q_all[:, 4]) + 0.005)     # piston 2 position
-    v_1_lim = (minimum(dq_all[:, 1]) - 0.01, maximum(dq_all[:, 1]) + 0.01)     # piston 1 velocity
-    v_2_lim = (minimum(dq_all[:, 4]) - 0.01, maximum(dq_all[:, 4]) + 0.01)     # piston 2 velocity
 
     anim = @animate for i in 1:N
 
@@ -497,7 +493,7 @@ end
 # Exported Functions/Parameters
 # ----------------------------------------------------------------
 
-export draw_mechanism, animate_mechanism
+export draw_mechanism!, animate_mechanism
 export plot_positions, plot_velocities, plot_accelerations
 export plot_piston_paths, plot_bar_path
 export animate_dashboard

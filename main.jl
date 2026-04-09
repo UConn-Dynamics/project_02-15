@@ -20,19 +20,19 @@ using Plots
 function main()
 
     # ----- Simulation Parameters ----------------------------------------
-    N          = 500                            # number of time steps
+    N          = 200                            # number of time steps
     n_rot      = 2                              # number of full rotations to simulate
     t_end      = n_rot * 2*pi / omega_drive     # total simulation time for two full rotations (approx. 6.28 s)
 
-    println("= ^ 120")
+    println("=" ^ 120)
     println("ME 5180 | Project 02 | Dual-Slider Crank Kinematics")
-    println("= ^ 120")
-    println("Bar Length:          L = $(L) m"
+    println("=" ^ 120)
+    println("Bar Length:          L = $(L) m")
     println("Driving Speed:       omega = $(omega_drive) rad/s")
     println("Number of steps:     N = $(N)")
     println("Simulation time:     t_end = $(round(t_end, digits=4)) s")
     println("Full rotations:      $(n_rot)")
-    println("= ^ 120")
+    println("=" ^ 120)
 
     # ----- Create Results Directory (if one doesnt exist) ---------------
     mkpath("results")
@@ -59,7 +59,7 @@ function main()
     # ----- Verify Constraint Satisfaction -------------------------------
     println("\nChecking constraint satisfaction...")
     max_residual = 0.0 
-    for i in 1:length(time)
+    for i in eachindex(time)
         C_val = C_eqs(q_all[i, :], time[i])          # evaluate constraint equations
         residual = sqrt(sum(C_val .^2))              # Euclidean norm
         max_residual = max(max_residual, residual)   # update max

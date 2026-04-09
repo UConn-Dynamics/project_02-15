@@ -96,7 +96,7 @@ function Cq_jacobian(q)
         0.0   1.0  0.0  0.0  0.0  0.0  0.0 -1.0  half_L*cos(theta_3)     ; # dC_6/dq
         0.0   0.0  0.0  1.0  0.0  0.0 -1.0  0.0  half_L*sin(theta_3)     ; # dC_7/dq
         0.0   0.0  0.0  0.0  1.0  0.0  0.0 -1.0 -half_L*cos(theta_3)     ; # dC_8/dq
-        0.0   0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0                     ; # dC_9/dq         
+        0.0   0.0  0.0  0.0  0.0  0.0  0.0  0.0  1.0                     ; # dC_9/dq         
          
     ]
 
@@ -254,14 +254,14 @@ function ddq_analytical(t)
     ddtheta_3 = 0.0
 
     ddx_1 = half_L * (ctheta + stheta) * omega_drive^2     # piston 1 center x-acceleration
-    ddy_2 = half_L * (ctheta + stheta) * omega_drive^2     # piston 1 center x-acceleration (= ddx_1)
+    ddy_1 = half_L * (ctheta + stheta) * omega_drive^2     # piston 1 center y-acceleration (= ddx_1)
     ddtheta_1 = 0.0
 
     ddx_2 = half_L * (stheta - ctheta) * omega_drive^2     # piston 2 center x-acceleration
-    ddy_2 = -half_L * (stheta - ctheta) * omega_drive^2    # piston 2 center x-acceleration (= -ddx_2)
+    ddy_2 = -half_L * (stheta - ctheta) * omega_drive^2    # piston 2 center y-acceleration (= -ddx_2)
     ddtheta_2 = 0.0
 
-    return [ddx_1, ddx_1, ddtheta_1, ddx_2, ddx_2, ddtheta_2, ddx_3, ddx_3, ddtheta_3]
+    return [ddx_1, ddy_1, ddtheta_1, ddx_2, ddy_2, ddtheta_2, ddx_3, ddy_3, ddtheta_3]
 
 end
 
