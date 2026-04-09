@@ -659,6 +659,8 @@ project_02-15/
 |
 ├───── notes/   # hand calculations
 |
+├───── results/ # program outputs (plots)
+|
 ├───── src/     # source Code
 |       |
 |       ├───── constraints.jl      # constraint equations and analytical solutions
