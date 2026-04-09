@@ -66,9 +66,9 @@ Several conclusions can be drawn from the results above. First, the piston traje
 
 From the position plots, one can observe that $x_1$, $y_1$, $\theta_1$, and $x_2$, $y_2$, $\theta_2$ are consistent with their respective constraint equations. This can also be observed for all generalized parameters in the velocity and acceleration plots, thus confirming that the constraints were implemented correctly and the simulation returned a valid solution. Furthermore, since the bar rotates at a constant rate, the position, velocity, and acceleration plots all exhibit sinusoidal behavior.  
 
-The analytical validation printout demonstrates that the numerical solver (using the NonlinearSolve package for positions and the backslash operator for velocities and accelerations) agrees with the analytical solution to within floating point precision. The constraint residual also remains effectively zero throughout the simulation, verifying that all constraints are satisfied at every time step.
+The analytical validation printout demonstrates that the numerical solver (using the NonlinearSolve package for positions and the backslash operator for velocities and accelerations) agrees with the analytical solution to within floating-point precision. The constraint residual also remains effectively zero throughout the simulation, verifying that all constraints are satisfied at every time step.
 
-Overall, this project demonstrates the capabilities of using constraint-based methods to solve kinematics problems. By creating constraint equations, computing their Jacobian, and solving for the system's position, velocity and acceleration at each time step, one can analyze complex problems without deriving explicit equations of motion. Furthermore, this general framework can be extended to systems with more bodies and/or constraints!
+Overall, this project demonstrates the capabilities of using constraint-based methods to solve kinematics problems. By creating constraint equations, computing their Jacobian, and solving for the system's position, velocity, and acceleration at each time step, one can analyze complex problems without deriving explicit equations of motion. Furthermore, this general framework can be extended to systems with more bodies and/or constraints!
 
 ## Derivations
 
@@ -133,7 +133,7 @@ y_2
 \end{aligned}
 $$
 
-Now, the rigid bar has length $L$ and it's local $x$-axis runs along its length. The center of the bar in global coordinates can be expressed as $\vec{R}\_{3} = [x_3, y_3]^T$. End A connects to Piston 1 at local coordinates $\vec{s}_{3A} = \left[-\frac{L}{2}, 0\right]^T$. In global coordinates, this can be expressed as:
+Now, the rigid bar has length $L$, and its local $x$-axis runs along its length. The center of the bar in global coordinates can be expressed as $\vec{R}\_{3} = [x_3, y_3]^T$. End A connects to Piston 1 at local coordinates $\vec{s}_{3A} = \left[-\frac{L}{2}, 0\right]^T$. In global coordinates, this can be expressed as:
 
 $$
 \begin{aligned}
@@ -382,7 +382,7 @@ $$
 \frac{d}{dt} \left(C_q \, \dot{\vec{q}}\right) + \frac{d}{dt}\left(\vec{C}_t\right) = \vec{0}
 $$
 
-The equation above can be re-written as:
+The equation above can be rewritten as:
 
 $$
 C_q \, \ddot{\vec{q}} = \vec{\gamma}
@@ -493,7 +493,7 @@ The solution process for the system above will consist of 3 sequential steps at 
 - Solve $C_q \, \dot{\vec{q}} = -\vec{C}_t$ for $\dot{\vec{q}}$ using positions found in Step 01.
 
 **Step 03: Solve for Accelerations (Linear)**
-- Solve $C_q \, \ddot{\vec{q}} = \vec{\gamma}$ for $\ddot{\vec{q}} using both positions found in Step 01 and velocities found in Step 02.
+- Solve $C_q \, \ddot{\vec{q}} = \vec{\gamma}$ for $\ddot{\vec{q}}$ using both positions found in Step 01 and velocities found in Step 02.
 
 The coordinates of the system above can also be solved for analytically. The analytical solution can be used as an initial guess for the numerical solver, and also as a benchmark to verify the numerical results. From constraint equations $C_5$ and $C_6$:
 
