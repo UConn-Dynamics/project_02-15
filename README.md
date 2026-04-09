@@ -372,7 +372,7 @@ $$
 0 \\
 0 \\
 0 \\
--\omega 
+\omega 
 \end{bmatrix}
 $$
 
