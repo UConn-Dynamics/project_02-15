@@ -402,7 +402,7 @@ function plot_bar_path(time, q_all; filename="results/bar_center_path.png")
         q_all[:, 7], q_all[:, 8],
         lw=2, color=:blue, label="Bar Center",
         aspect_ratio=:equal,
-        xlabel="x_3 (m)", ylabel="y_3 (m)",
+        xlabel="x₃ (m)", ylabel="y₃ (m)",
         title="Bar Center Trajectory",
         legend=:outertopright
     )
