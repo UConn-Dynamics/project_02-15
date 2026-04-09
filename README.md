@@ -185,7 +185,7 @@ y_3 + \frac{L}{2} \sin\theta_3
 \end{aligned}
 $$
 
-The constraint equations can now be assembled. A prismatic (sliding) joint constrains Piston 1 to the $+40^\circ$ track. Therefore, the center of Piston 1 is constrained to:
+The constraint equations can now be assembled. A prismatic (sliding) joint constrains Piston 1 to the $+45^\circ$ track. Therefore, the center of Piston 1 is constrained to:
 
 $$
 C_1 = y_1 - x_1 = 0
@@ -197,7 +197,7 @@ $$
 C_2 = \theta_1 - \pi/4 = 0
 $$
 
-Similarly, a prismatic (sliding) joint also constrains Piston 2 to the $-40^\circ$ track. Therefore, the center of Piston 2 is constrained to:
+Similarly, a prismatic (sliding) joint also constrains Piston 2 to the $-45^\circ$ track. Therefore, the center of Piston 2 is constrained to:
 
 $$
 C_3 = y_2 + x_2 = 0
